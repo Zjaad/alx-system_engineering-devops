@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Displays a list of contents in directory.
+li=$(ls)
+for x in $li; do
+  echo "$x" | cut -d '-' -f2
+done
