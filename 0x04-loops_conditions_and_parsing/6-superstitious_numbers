@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Displays numbers, and provides messages for specific iterations.
+nbr=1
+while [ $nbr -le 20 ]; do
+    case $nbr in
+        4)
+            echo "bad luck from China"
+            ;;
+        9)
+            echo "bad luck from Japan"
+            ;;
+        17)
+            echo "bad luck from Italy"
+            ;;
+        *)
+            echo $nbr
+            ;;
+    esac
+    ((nbr++))
+done
