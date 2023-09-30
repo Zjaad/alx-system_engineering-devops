@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Find process ID of 7-highlander and send it a SIGTERM signal
+pkill -TERM -f "7-highlander"
+
