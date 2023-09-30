@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#clean and exit
+cleanexit() {
+    rm -f /var/run/myscript.pid
+    exit 0
+}
+trap 'cleanexit' SIGTERM SIGQUIT
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command"; cleanexit' SIGTERM
+echo $$ > /var/run/myscript.pid
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
+
