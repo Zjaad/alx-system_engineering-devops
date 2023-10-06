@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#port number
+while :; do echo -ne "HTTP/1.1 200 OK\r\n\r\n$(date)\r\n" | nc -l -p 98 -q 1; done
