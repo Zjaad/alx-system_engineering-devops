@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-#Setup domain
-echo "zjaad.tech"
+zjaad.tech
