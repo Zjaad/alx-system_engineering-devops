@@ -1,3 +1,4 @@
+#!/usr/bin/puppet
 #task num5
 
 class nginx_server {
