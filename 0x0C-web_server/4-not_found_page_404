@@ -6,8 +6,8 @@ sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw enable
 
-echo "location /xyz {" | sudo tee -a /etc/nginx/sites-available/default
-echo "    return 404 \"Ceci n'est pas une page\";" | sudo tee -a /etc/nginx/sites-available/default
-echo "}" | sudo tee -a /etc/nginx/sites-available/default
+sudo sed -i '/server_name _;/a \\n    location \/xyz {' /etc/nginx/sites-available/default
+sudo sed -i '/location \/xyz {/a \\n        return 404 "Ceci n'est pas une page";' /etc/nginx/sites-available/default
+sudo sed -i '/return 404 "Ceci n'\''est pas une page";/a \\n    }' /etc/nginx/sites-available/default
 
 sudo service nginx restart
