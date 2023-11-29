@@ -6,6 +6,8 @@ apt-get install -y nginx
 sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw enable
+udo ufw status
+systemctl status nginx
 
 echo "Hello World!" > /usr/share/nginx/html/index.html
 sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
