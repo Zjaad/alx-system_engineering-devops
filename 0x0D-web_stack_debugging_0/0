@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Start docker wiht appache img
+docker run -p 8080:80 -d -it holbertonschool/265-0
+#get container id
+container_id=$(docker ps -q)
+#connect it 
+docker exec -it "$container_id" /bin/bash -c "echo "Hello Holberton" > /var/www/html/index.html && service apache2 restart"
