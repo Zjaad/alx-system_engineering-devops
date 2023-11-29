@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#installing nginx
+
+apt-get install -y nginx
+echo "Hello World!" > /usr/share/nginx/html/index.html
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+service nginx restart
