@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Configures Nginx to add a custom HTTP header to its response.
+sudo apt-get update
+sudo apt-get -y install nginx
+HOSTNAME=$(hostname)
+CONFIG_FILE="/etc/nginx/sites-available/default"
+HEADER_CONFIG="add_header X-Served-By $HOSTNAME;"
+if grep -q "$HEADER_CONFIG" "$CONFIG_FILE"; then
+	echo "Custom header is already configured. Skipping..."
+else
+	echo "$HEADER_CONFIG" | sudo tee -a "$CONFIG_FILE"
+	
+	sudo service nginx restart
+	echo "Custom header configured successfully."
+fi
