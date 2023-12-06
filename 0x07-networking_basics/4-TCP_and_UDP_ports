@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Listening ports with PID and program name
-netstat -ltnp 2>/dev/null | awk '/LISTEN/ {split($4, a, ":"); getline cmd < ("/proc/" a[2] "/cmdline"); print "Port:", a[2], "PID:", $7, "Program:", cmd}'
