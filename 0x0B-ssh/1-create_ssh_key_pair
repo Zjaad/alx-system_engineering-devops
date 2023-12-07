@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-#generating an RSA key
-ssh-keygen -t rsa -b 4096 -C "vagrant@ubuntu" -f school -N betty
