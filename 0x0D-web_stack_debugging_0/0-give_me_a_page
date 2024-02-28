@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Fixing my server to return 'Hello Holberton' for HTTP requests.
-service apache2 start
-echo "Hello Holberton" > /var/www/html/index.html
+# restart apache
+service apache2 restart
