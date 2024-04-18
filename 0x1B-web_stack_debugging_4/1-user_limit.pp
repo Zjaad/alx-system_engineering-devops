@@ -1,16 +1,13 @@
 # 1-user_limit.pp
 # This manifest increases the file descriptor limits
 
-file_line { 'holberton_soft_nofile':
-	ensure => present,
-	path   => '/etc/security/limits.conf',
-	line   => 'holberton soft nofile 4096',
-	match  => '^holberton soft nofile',
+exec { 'soft_nofile':
+  provider => shell,
+  command  => 'sudo sed -i "s/nofile 5/nofile 50000/" /etc/security/limits.conf',
+  before   => Exec['hard_nofile'],
 }
 
-file_line { 'holberton_hard_nofile':
-	ensure => present,
-	path   => '/etc/security/limits.conf',
-	line   => 'holberton hard nofile 10000',
-	match  => '^holberton hard nofile',
+exec { 'hard_nofile':
+  provider => shell,
+  command  => 'sudo sed -i "s/nofile 4/nofile 40000/" /etc/security/limits.conf',
 }
