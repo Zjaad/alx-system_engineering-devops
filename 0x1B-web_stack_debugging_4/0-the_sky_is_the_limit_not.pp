@@ -1,16 +1,12 @@
 # 0-the_sky_is_the_limit_not.pp
 # This manifest configures Nginx
 
-exec { 'increase_worker_connections':
-  command  => "sed -i 's/worker_connections 768;/worker_connections 2000;/' /etc/nginx/nginx.conf",
-  path     => '/bin:/usr/bin:/sbin:/usr/sbin',
-  unless   => "grep -q 'worker_connections 2000;' /etc/nginx/nginx.conf",
-  provider => shell,
-  notify   => Exec['restart_nginx'],
+exec { 'setLimit':
+  path    => '/bin',
+  command => "sed -i 's/15/2000/' /etc/default/nginx",
 }
 
-exec { 'restart_nginx':
-  command     => 'service nginx restart',
-  provider    => shell,
-  refreshonly => true,
+exec { 'reboot':
+  command => '/usr/sbin/service nginx restart',
+  require => Exec['setLimit'],
 }
